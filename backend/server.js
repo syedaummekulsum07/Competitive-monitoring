@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config()
 const port = process.env.PORT
 
 const competitorRoutes = require("./routes/competitorRoutes");
-require("dotenv").config()
+
 
 const app = express();
 app.use(express.json());
