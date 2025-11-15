@@ -68,7 +68,7 @@ You must add at least one competitor before fetching updates.
 
 - Add at least one competitor using the API (Postman or Thunder Client).
 
-- Open dashboard at http://localhost:5000.
+- Open dashboard at http://localhost:5000/index.html.
 
 - Click “Fetch Updates” → updates will appear automatically.
 
