@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Competitor Monitoring Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1 class="title">📊 Competitor Monitoring Dashboard</h1>
+
+    <div class="actions">
+      <button class="btn" onclick="fetchUpdates()">Fetch Latest Updates</button>
+    </div>
+
+    <h2 class="section-title">Latest Competitor Insights</h2>
+
+    <div id="updates" class="updates-container"></div>
+
+  </div>
+
+
+  <script>
+    async function fetchUpdates() {
+      await fetch("/api/competitors/fetch");
+      loadUpdates();
+    }
+
+    async function loadUpdates() {
+      const res = await fetch("/api/competitors/updates");
+      const data = await res.json();
+
+      document.getElementById("updates").innerHTML =
+        data.map(u => `
+          <div class="card">
+            <h3>${u.title}</h3>
+            <p class="tag">${u.tag} • ${u.competitor}</p>
+            <a href="${u.link}" target="_blank" class="view-btn">View Update ➜</a>
+          </div>
+        `).join("");
+    }
+
+    loadUpdates();
+  </script>
+
+</body>
+</html>
